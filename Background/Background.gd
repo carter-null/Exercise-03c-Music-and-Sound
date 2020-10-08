@@ -3,10 +3,22 @@ extends ColorRect
 onready var HUD = get_node("/root/Game/HUD")
 var c = 0
 var colors = [
-	Color8(0,0,0)			#black
-	,Color8(33,37,41)		#gray 9
-	,Color8(52,58,64)		#gray 8
-	,Color8(33,37,41)		#gray 9
+	Color8(280,0,0)		#red0
+	,Color8(250,0,0)		#red1
+	,Color8(220,0,0)		#red2
+	,Color8(190,0,0)		#red3
+	,Color8(160,0,0)		#red4
+	,Color8(130,0,0)		#red5
+	,Color8(100,0,0)		#red6
+	,Color8(70,0,0)		#red7
+	,Color8(40,0,0)		#red8
+	,Color8(100,0,0)		#red6
+	,Color8(130,0,0)		#red5
+	,Color8(160,0,0)		#red4
+	,Color8(190,0,0)		#red3
+	,Color8(220,0,0)		#red2
+	,Color8(250,0,0)		#red1
+	,Color8(280,0,0)		#red0
 ]
 
 

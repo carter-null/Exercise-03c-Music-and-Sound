@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export var max_speed = 400.0
+export var max_speed = 425.0
 export var min_speed = 100.0
 onready var HUD = get_node("/root/Game/HUD")
 onready var camera = get_node("/root/Game/Camera")
@@ -11,7 +11,8 @@ onready var effect_brick = get_node("/root/Game/Effect_Brick")
 
 var wall_trauma = 0.005
 var paddle_trauma = 0.008
-var brick_trauma = 0.01
+var brick_trauma = 0.0105
+
 
 func _ready():
 	HUD.connect("changed",self,"_on_HUD_changed")
@@ -22,7 +23,7 @@ func _ready():
 
 func update_color():
 	if HUD.color_ball:
-		$Color.color = Color8(34,184,207)
+		$Color.color = Color8(500,500,500)
 	else:
 		$Color.color = Color(1,1,1,1)
 	if HUD.particle_ball:

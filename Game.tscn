@@ -6,13 +6,12 @@
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=4]
 [ext_resource path="res://Walls/Walls.gd" type="Script" id=5]
 [ext_resource path="res://Background/Background.gd" type="Script" id=6]
-[ext_resource path="res://Assets/confetti.png" type="Texture" id=7]
-[ext_resource path="res://Assets/bubble.png" type="Texture" id=8]
+[ext_resource path="res://Assets/redparticle.png" type="Texture" id=7]
+[ext_resource path="res://Assets/redbubble.png" type="Texture" id=8]
 [ext_resource path="res://Camera/Camera.gd" type="Script" id=9]
 [ext_resource path="res://Ball/Trail_Container.gd" type="Script" id=10]
 [ext_resource path="res://Camera/WorldEnvironment.gd" type="Script" id=11]
 [ext_resource path="res://Paddle/Face.gd" type="Script" id=12]
-[ext_resource path="res://Assets/eye.png" type="Texture" id=13]
 [ext_resource path="res://Assets/pupil.png" type="Texture" id=14]
 [ext_resource path="res://Assets/mouth.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Datalegreya-Thin.otf" type="DynamicFontData" id=16]
@@ -20,7 +19,8 @@
 [ext_resource path="res://Audio/hit_sound copy.wav" type="AudioStream" id=18]
 [ext_resource path="res://Audio/brick.wav" type="AudioStream" id=19]
 [ext_resource path="res://Audio/clink copy.wav" type="AudioStream" id=20]
-[ext_resource path="res://Audio/Cartopia Theme copy.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Audio/bricktheme.wav" type="AudioStream" id=21]
+[ext_resource path="res://Assets/eye.png" type="Texture" id=22]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -65,9 +65,7 @@ hue_variation_curve = SubResource( 4 )
 extents = Vector2( 50, 10 )
 
 [sub_resource type="Curve" id=9]
-min_value = -360.0
-max_value = 360.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, -360 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0.00255755, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.26087, 0.274775 ), 0.0, 0.0, 0, 0, Vector2( 0.537084, 0.630631 ), 0.0, 0.0, 0, 0, Vector2( 0.795396, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.797954, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=10]
 curve = SubResource( 9 )
@@ -88,11 +86,11 @@ curve = SubResource( 13 )
 [sub_resource type="ParticlesMaterial" id=15]
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
-spread = 60.0
+spread = 180.0
 gravity = Vector3( 0, 98, 0 )
-initial_velocity = 450.0
-initial_velocity_random = 0.75
-angular_velocity = 100.0
+initial_velocity = 607.53
+initial_velocity_random = 0.8
+angular_velocity = 202.42
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -102,8 +100,6 @@ scale = 0.5
 scale_random = 0.5
 scale_curve = SubResource( 14 )
 color_ramp = SubResource( 12 )
-hue_variation = 0.7
-hue_variation_random = 0.25
 
 [sub_resource type="DynamicFont" id=16]
 size = 36
@@ -125,7 +121,7 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="Background"]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="Tween" type="Tween" parent="Background"]
@@ -171,14 +167,17 @@ script = ExtResource( 12 )
 
 [node name="Eye_left" type="Sprite" parent="Paddle_Container/Paddle/Face"]
 position = Vector2( -35, -10 )
-texture = ExtResource( 13 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 22 )
 
 [node name="Eye_right" type="Sprite" parent="Paddle_Container/Paddle/Face"]
 position = Vector2( 35, -10 )
-texture = ExtResource( 13 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 22 )
 
 [node name="Pupil_left" type="Node2D" parent="Paddle_Container/Paddle/Face"]
 position = Vector2( -35, -10 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="Sprite" type="Sprite" parent="Paddle_Container/Paddle/Face/Pupil_left"]
 position = Vector2( 10, 0 )
@@ -186,19 +185,22 @@ texture = ExtResource( 14 )
 
 [node name="Pupil_right" type="Node2D" parent="Paddle_Container/Paddle/Face"]
 position = Vector2( 35, -10 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="Sprite" type="Sprite" parent="Paddle_Container/Paddle/Face/Pupil_right"]
 position = Vector2( 10, 0 )
 texture = ExtResource( 14 )
 
 [node name="Mouth" type="Sprite" parent="Paddle_Container/Paddle/Face"]
-position = Vector2( 0, 20 )
+position = Vector2( 0.521545, 20 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 15 )
 
 [node name="Particles2D" type="Particles2D" parent="Paddle_Container"]
 position = Vector2( 507, 700 )
+scale = Vector2( 0.19, 0.19 )
 emitting = false
-amount = 6
+amount = 10
 lifetime = 0.4
 one_shot = true
 process_material = SubResource( 15 )
@@ -240,7 +242,7 @@ script = ExtResource( 17 )
 
 [node name="Effect_Paddle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -7.068
+volume_db = -7.633
 
 [node name="Effect_Wall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
@@ -248,7 +250,6 @@ volume_db = -8.078
 
 [node name="Effect_Brick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
-volume_db = 12.117
 
 [node name="HUD" type="Control" parent="."]
 visible = false
@@ -390,6 +391,7 @@ __meta__ = {
 margin_top = 35.0
 margin_right = 134.0
 margin_bottom = 67.0
+grow_horizontal = 2
 text = "Paddle Stretches"
 __meta__ = {
 "_edit_use_anchors_": false
