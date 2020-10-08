@@ -391,7 +391,6 @@ __meta__ = {
 margin_top = 35.0
 margin_right = 134.0
 margin_bottom = 67.0
-grow_horizontal = 2
 text = "Paddle Stretches"
 __meta__ = {
 "_edit_use_anchors_": false
