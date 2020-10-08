@@ -10,6 +10,7 @@ var colors = [
 	,Color8(160,0,0)		#red4
 	,Color8(130,0,0)		#red5
 	,Color8(100,0,0)		#red6
+	,Color8(100,0,0)	
 	,Color8(70,0,0)		#red7
 	,Color8(40,0,0)		#red8
 	,Color8(100,0,0)		#red6

@@ -9,7 +9,7 @@ onready var effect_paddle = get_node("/root/Game/Effect_Paddle")
 onready var effect_wall = get_node("/root/Game/Effect_Wall")
 onready var effect_brick = get_node("/root/Game/Effect_Brick")
 
-var wall_trauma = 0.005
+var wall_trauma = 0.0005
 var paddle_trauma = 0.008
 var brick_trauma = 0.0105
 

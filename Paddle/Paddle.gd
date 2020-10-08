@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var Ball = load("res://Ball/Ball.tscn")
 onready var HUD = get_node("/root/Game/HUD")
 
-export var speed = 30
+export var speed = 10
 export var distort = Vector2(1.5,1.1)
 export var fall_duration = 3
 
@@ -12,7 +12,7 @@ onready var collision_transform = $CollisionShape2D.get_transform().get_scale()
 
 onready var target_y = position.y
 
-var color = Color8(70,0,0) #DarkRed
+var color = Color8(100,0,0) #EvilRed
 var color_s = color.s
 
 func _ready():
